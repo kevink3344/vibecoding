@@ -2,20 +2,42 @@ import { useState, useEffect } from 'react';
 import type { StockData } from '../types/stock';
 import '../styles/StockDashboard.css';
 
-export const StockDashboard = () => {
+interface StockDashboardProps {
+  onLogout: () => void;
+}
+
+export const StockDashboard = ({ onLogout }: StockDashboardProps) => {
   const [stockData, setStockData] = useState<StockData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    // Get user from localStorage
+    const userStr = localStorage.getItem('user');
+    if (userStr) {
+      setUser(JSON.parse(userStr));
+    }
+  }, []);
 
   useEffect(() => {
     const fetchStockData = async () => {
       try {
+        const token = localStorage.getItem('authToken');
+        if (!token) {
+          throw new Error('No authentication token');
+        }
+
         // Try fetching from API first, fall back to JSON if not available
         const apiUrl = import.meta.env.DEV 
           ? 'http://localhost:3000/api/stocks/NVDA'
           : '/api/stocks/NVDA';
         
-        const response = await fetch(apiUrl);
+        const response = await fetch(apiUrl, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         
         if (!response.ok) {
           // Fallback to JSON if API is not available
@@ -48,8 +70,22 @@ export const StockDashboard = () => {
   return (
     <div className="container">
       <header className="header">
-        <h1>Stock Dashboard</h1>
-        <p className="subtitle">Real-time Stock Market Data</p>
+        <div className="header-left">
+          <h1>Stock Dashboard</h1>
+          <p className="subtitle">Real-time Stock Market Data</p>
+        </div>
+        <div className="header-right">
+          {user && (
+            <div className="user-info">
+              {user.picture && <img src={user.picture} alt={user.name} className="user-avatar" />}
+              <div className="user-details">
+                <p className="user-name">{user.name}</p>
+                <p className="user-email">{user.email}</p>
+              </div>
+              <button onClick={onLogout} className="logout-btn">Sign Out</button>
+            </div>
+          )}
+        </div>
       </header>
 
       <main className="main-content">
