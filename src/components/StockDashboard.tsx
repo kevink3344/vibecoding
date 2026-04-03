@@ -10,8 +10,23 @@ export const StockDashboard = () => {
   useEffect(() => {
     const fetchStockData = async () => {
       try {
-        const response = await fetch('/data/nvda.json');
-        if (!response.ok) throw new Error('Failed to fetch stock data');
+        // Try fetching from API first, fall back to JSON if not available
+        const apiUrl = import.meta.env.DEV 
+          ? 'http://localhost:3000/api/stocks/NVDA'
+          : '/api/stocks/NVDA';
+        
+        const response = await fetch(apiUrl);
+        
+        if (!response.ok) {
+          // Fallback to JSON if API is not available
+          const fallbackResponse = await fetch('/data/nvda.json');
+          if (!fallbackResponse.ok) throw new Error('Failed to fetch stock data');
+          const data: StockData = await fallbackResponse.json();
+          setStockData(data);
+          setLoading(false);
+          return;
+        }
+        
         const data: StockData = await response.json();
         setStockData(data);
         setLoading(false);
