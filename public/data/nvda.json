@@ -1,0 +1,25 @@
+{
+  "symbol": "NVDA",
+  "name": "NVIDIA Corporation",
+  "price": 875.43,
+  "change": 12.54,
+  "changePercent": 1.45,
+  "previousClose": 862.89,
+  "open": 868.50,
+  "dayHigh": 879.99,
+  "dayLow": 863.21,
+  "fiftyTwoWeekHigh": 945.23,
+  "fiftyTwoWeekLow": 312.50,
+  "marketCap": "2.15T",
+  "peRatio": 68.9,
+  "dividend": 0.08,
+  "yield": 0.04,
+  "volume": 28945600,
+  "avgVolume": 34567800,
+  "description": "NVIDIA designs and manufactures graphics processing units (GPUs) and system-on-chip units.",
+  "chartData": [
+    { "date": "Apr 1", "price": 850.25 },
+    { "date": "Apr 2", "price": 862.89 },
+    { "date": "Apr 3", "price": 875.43 }
+  ]
+}

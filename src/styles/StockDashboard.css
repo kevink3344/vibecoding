@@ -1,0 +1,384 @@
+/* Root Variables */
+:root {
+  --primary-color: #1e3a8a;
+  --positive-color: #16a34a;
+  --negative-color: #dc2626;
+  --bg-color: #f8fafc;
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --padding-xs: 8px;
+  --padding-sm: 12px;
+  --padding-md: 16px;
+  --padding-lg: 24px;
+  --padding-xl: 32px;
+  --border-radius: 8px;
+}
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+}
+
+/* Container */
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: var(--padding-md);
+  max-width: 100%;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: var(--padding-lg) 0;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: var(--padding-lg);
+}
+
+.header h1 {
+  font-size: 24px;
+  margin-bottom: var(--padding-sm);
+  color: var(--primary-color);
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  width: 100%;
+}
+
+/* Stock Header */
+.stock-header {
+  background: var(--card-bg);
+  padding: var(--padding-lg);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  margin-bottom: var(--padding-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.stock-title h2 {
+  font-size: 28px;
+  margin-bottom: var(--padding-xs);
+}
+
+.stock-name {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.stock-price {
+  margin-top: var(--padding-md);
+}
+
+.stock-price.positive {
+  color: var(--positive-color);
+}
+
+.stock-price.negative {
+  color: var(--negative-color);
+}
+
+.price {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: var(--padding-xs);
+}
+
+.change {
+  font-size: 16px;
+}
+
+/* Stock Description */
+.stock-description {
+  background: var(--card-bg);
+  padding: var(--padding-lg);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  margin-bottom: var(--padding-lg);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* Metrics Grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--padding-md);
+  margin-bottom: var(--padding-lg);
+}
+
+.metric-card {
+  background: var(--card-bg);
+  padding: var(--padding-md);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.1);
+  border-color: var(--primary-color);
+}
+
+.metric-label {
+  color: var(--text-secondary);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--padding-xs);
+}
+
+.metric-value {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+/* Chart Section */
+.chart-section {
+  background: var(--card-bg);
+  padding: var(--padding-lg);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  margin-bottom: var(--padding-lg);
+}
+
+.chart-section h3 {
+  font-size: 18px;
+  margin-bottom: var(--padding-md);
+  color: var(--primary-color);
+}
+
+.chart-container {
+  overflow-x: auto;
+}
+
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.price-table thead {
+  background-color: var(--bg-color);
+}
+
+.price-table th {
+  padding: var(--padding-md);
+  text-align: left;
+  color: var(--text-secondary);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.price-table td {
+  padding: var(--padding-md);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.price-table tbody tr:hover {
+  background-color: var(--bg-color);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: var(--padding-lg) 0;
+  border-top: 1px solid var(--border-color);
+  margin-top: var(--padding-lg);
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+/* Loading & Error States */
+.loading,
+.error {
+  font-size: 16px;
+  padding: var(--padding-lg);
+  text-align: center;
+}
+
+.error {
+  color: var(--negative-color);
+}
+
+.loading {
+  color: var(--text-secondary);
+}
+
+/* Responsive Design */
+
+/* Tablet (768px and up) */
+@media (min-width: 768px) {
+  .container {
+    padding: var(--padding-lg);
+  }
+
+  .header {
+    padding: var(--padding-xl) 0;
+  }
+
+  .header h1 {
+    font-size: 32px;
+  }
+
+  .stock-header {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .stock-price {
+    margin-top: 0;
+    text-align: right;
+  }
+
+  .price {
+    font-size: 40px;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stock-title h2 {
+    font-size: 36px;
+  }
+}
+
+/* Desktop (1024px and up) */
+@media (min-width: 1024px) {
+  .container {
+    padding: var(--padding-xl);
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+
+  .header {
+    padding: var(--padding-xl) 0;
+  }
+
+  .header h1 {
+    font-size: 40px;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .metric-card {
+    padding: var(--padding-lg);
+  }
+
+  .metric-value {
+    font-size: 20px;
+  }
+
+  .stock-header {
+    margin-bottom: var(--padding-xl);
+  }
+
+  .price {
+    font-size: 48px;
+  }
+}
+
+/* Large Desktop (1440px and up) */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1400px;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Extra Small Devices (under 480px) */
+@media (max-width: 479px) {
+  .container {
+    padding: var(--padding-sm);
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .stock-header {
+    padding: var(--padding-md);
+  }
+
+  .stock-title h2 {
+    font-size: 22px;
+  }
+
+  .price {
+    font-size: 24px;
+  }
+
+  .change {
+    font-size: 14px;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--padding-sm);
+  }
+
+  .metric-card {
+    padding: var(--padding-sm);
+  }
+
+  .metric-label {
+    font-size: 11px;
+  }
+
+  .metric-value {
+    font-size: 16px;
+  }
+
+  .price-table th,
+  .price-table td {
+    padding: var(--padding-sm);
+    font-size: 12px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .container {
+    background: white;
+  }
+
+  .metric-card:hover {
+    box-shadow: none;
+  }
+}
